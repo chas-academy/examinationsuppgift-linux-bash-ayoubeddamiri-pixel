@@ -1,20 +1,20 @@
 #!/bin/bash
 
-# Måste vara root
 if [ "$EUID" -ne 0 ]; then
-    echo "Kör som root!"
+    echo "Du måste köra som root!"
     exit 1
 fi
 
-# Måste skicka med namn
 if [ $# -eq 0 ]; then
-    echo "Skicka med användarnamn"
+    echo "Användning: $0 user1 user2 ..."
     exit 1
 fi
 
-# Lista alla användare
-alla=$(cut -d: -f1 /etc/passwd)
+alla_anvandare=$(cut -d: -f1 /etc/passwd)
 
 for namn in "$@"
 do
     useradd -m "$namn"
+
+   
+
